@@ -1,0 +1,82 @@
+@startuml
+
+class AppDatabase {
+  + onCreate()
+  + onUpgrade()
+}
+
+class ClothingActivity {
+  + onCreate()
+  + onClick()
+  + updateClothingList()
+}
+ClothingActivity --> DatabaseHelper : "uses"
+ClothingActivity --> AppDatabase : "uses"
+ClothingActivity --> "1" activity_clothing : "inflates"
+
+class DatabaseHelper {
+  + onCreate()
+  + onUpgrade()
+  + addFood()
+  + deleteAllFood()
+  + addMovie()
+  + deleteAllMovies()
+  + addClothing()
+  + deleteAllClothing()
+}
+
+class FoodActivity {
+  + onCreate()
+  + onClick()
+  + updateFoodList()
+}
+FoodActivity --> DatabaseHelper : "uses"
+FoodActivity --> AppDatabase : "uses"
+FoodActivity --> "1" activity_food : "inflates"
+
+class MainActivity {
+  + onCreate()
+  + onClick()
+}
+MainActivity --> DatabaseHelper : "uses"
+MainActivity --> AppDatabase : "uses"
+MainActivity --> "1" activity_main : "inflates"
+
+class WatchActivity {
+  + onCreate()
+  + onClick()
+  + updateMoviesList()
+}
+WatchActivity --> DatabaseHelper : "uses"
+WatchActivity --> AppDatabase : "uses"
+WatchActivity --> "1" activity_watch : "inflates"
+
+' XML Layouts
+class activity_clothing {
+  - LinearLayout
+  - EditText
+  - Button
+  - ListView
+}
+
+class activity_food {
+  - LinearLayout
+  - EditText
+  - Button
+  - ListView
+}
+
+class activity_main {
+  - LinearLayout
+  - Button
+  - ImageView
+}
+
+class activity_watch {
+  - LinearLayout
+  - EditText
+  - Button
+  - ListView
+}
+
+@enduml
